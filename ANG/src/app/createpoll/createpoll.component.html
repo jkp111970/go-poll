@@ -1,0 +1,67 @@
+<div class="form-group">
+    <h2>Create Poll</h2>
+
+    <form [formGroup]="form">
+        <div class="form-group">
+            <input class="form-control" type="text" placeholder="Poll Message" required
+                [formControlName]="'pollMessage'"/>
+        </div>
+        <span *ngIf="!showQuestion" class="glyphicon glyphicon-plus" style="cursor: pointer;"
+            (click)="toggleQuestionDiv()"> 
+            Add Question to Poll
+        </span>
+        <br/>
+        <div *ngIf="showQuestion">
+            <div class="form-group">
+                <input class="form-control" type="text" placeholder="Question" required
+                [formControlName]="'question'"/>
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" placeholder="Option 1" required
+                [formControlName]="'option1'"/>
+                <input type="checkbox" [formControlName]="'isTrueO1'"/>
+                <label [htmlFor]="'isTrueO1'">Is this correct Option?</label>
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" placeholder="Option 2" required
+                [formControlName]="'option2'"/>
+                <input type="checkbox" [formControlName]="'isTrueO2'"/>
+                <label [htmlFor]="'isTrueO2'">Is this correct Option?</label>
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" placeholder="Option 3"
+                [formControlName]="'option3'"/>
+                <input type="checkbox" [formControlName]="'isTrueO3'"/>
+                <label [htmlFor]="'isTrueO3'">Is this correct Option?</label>
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" placeholder="Option 4" 
+                [formControlName]="'option4'"/>
+                <input type="checkbox"  [formControlName]="'isTrueO4'"/> 
+                <label [htmlFor]="'isTrueO4'">Is this correct Option?</label>
+            </div>
+            <div *ngIf="!validationFlag" class="alert alert-danger">
+                Request to add mandatory fields
+            </div>
+        <div>
+            <button class="btn btn-primary" (click)="addQuestionToPoll()">Save Question</button>
+        </div>
+    </div>
+
+    <div *ngIf="errorMessage" class="alert alert-danger">
+        {{errorMessage}}
+    </div>
+
+    </form>
+
+    <ag-grid-angular style="width: 1000px;height: 200px" 
+        class="ag-theme-balham" [columnDefs]="column" [rowData]="rowData"
+        (gridReady)="onGridReady($event)"
+        >
+    </ag-grid-angular>
+
+    <div>
+        <button class="btn btn-primary" (click)="createPoll()">Create Poll</button>
+    </div>
+
+</div>

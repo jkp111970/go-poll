@@ -1,0 +1,19 @@
+:host{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    background-image: url('../../../assets/mountains.jpg');
+    background-position: center center;
+    background-size: cover;
+}
+.registestration-form {
+    min-width: 300px;
+    background-color: white;
+    opacity: .93;
+    padding: 20px;
+}
+.btn-submit {
+    float: right;
+}

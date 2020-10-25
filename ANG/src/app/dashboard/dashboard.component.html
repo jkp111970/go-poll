@@ -1,0 +1,14 @@
+<ag-grid-angular style="width: 1000px;height: 200px" 
+    class="ag-theme-balham" [columnDefs]="column" [rowData]="rowData"
+    (gridReady)="onGridReady($event)"
+    (rowClicked)="onRowClicked($event)"
+    >
+</ag-grid-angular>
+
+<button class="btn btn-primary">Publish Poll</button>
+
+<ag-grid-angular style="width: 1000px;height: 200px" 
+        class="ag-theme-balham" [columnDefs]="columnPollQData" [rowData]="rowPollQDataData"
+        (gridReady)="onPollQDataGridReady($event)"
+>
+</ag-grid-angular>

@@ -1,0 +1,23 @@
+<div [hidden]="action ==='add' && field.isId" [formGroup]="form">
+
+    <div [ngSwitch]="field.type">
+        <div *ngSwitchCase="'string'" class="form-group">
+            <label [htmlFor]="field.key">{{field.label}}</label>
+            <input type="text" class="form-control" [formControlName]="field.key"
+                [readonly]="action == 'read' || field.isId" [id]="field.key" [required]="field.required">
+        </div>
+
+        <div *ngSwitchCase="'number'" class="form-group">
+            <label [htmlFor]="field.key">{{field.label}}</label>
+            <input type="number" class="form-control" [formControlName]="field.key"
+                [readonly]="action == 'read' || field.isId" [id]="field.key" [required]="field.required">
+        </div>
+
+        <div *ngIf="form.get(field.key).hasError('required') && (submitted || form.get(field.key).touched)"
+            class="alert alert-danger">
+            {{field.label}} is Required.
+        </div>
+
+    </div>
+
+</div>
